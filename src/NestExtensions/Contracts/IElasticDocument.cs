@@ -2,5 +2,5 @@ namespace NestExtensions.Contracts;
 
 public interface IElasticDocument
 {
-    public string? DocumentId { get; set; }
+    string? DocumentId { get; set; }
 }
