@@ -1,5 +1,3 @@
-using Nest;
-
 namespace NestExtensions.Contracts;
 
 public interface IElasticIndexSnapshot<TDocument> : IAsyncDisposable

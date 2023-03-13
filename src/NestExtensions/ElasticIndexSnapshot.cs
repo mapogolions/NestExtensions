@@ -1,3 +1,5 @@
+using Nest;
+
 namespace NestExtensions.Contracts;
 
 public class ElasticIndexSnapshot<TDocument> : IElasticIndexSnapshot<TDocument> where TDocument : class

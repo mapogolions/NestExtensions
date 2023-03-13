@@ -1,9 +1,8 @@
-using System.Text;
 using Nest;
 
 namespace NestExtensions;
 
-public class ElasticIndexSlice<TDocument> : ISlice<TDocument> where TDocument : class
+public class ElasticIndexSlice<TDocument> : IElasticIndexSlice<TDocument> where TDocument : class
 {
     private readonly IElasticClient _client;
     private readonly ElasticIndexSliceOptions _options;

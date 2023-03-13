@@ -1,4 +1,4 @@
-namespace NestExtensions.Utop;
+namespace NestExtensions;
 
 public class ElasticIndexSliceOptions
 {

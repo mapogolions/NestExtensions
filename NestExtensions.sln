@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{03946D9D-0F24-412C-8A56-7B0A96E2716D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NestExtensions.Utop", "src\NestExtensions.Utop\NestExtensions.Utop.csproj", "{F5E8A597-925B-4E44-90B7-EB62F14E8C3E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NestExtensions", "src\NestExtensions\NestExtensions.csproj", "{CB97F7F0-34B5-4C91-B604-43EE6D928D77}"
 EndProject
 Global
@@ -18,17 +16,12 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F5E8A597-925B-4E44-90B7-EB62F14E8C3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F5E8A597-925B-4E44-90B7-EB62F14E8C3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F5E8A597-925B-4E44-90B7-EB62F14E8C3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F5E8A597-925B-4E44-90B7-EB62F14E8C3E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CB97F7F0-34B5-4C91-B604-43EE6D928D77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CB97F7F0-34B5-4C91-B604-43EE6D928D77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB97F7F0-34B5-4C91-B604-43EE6D928D77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB97F7F0-34B5-4C91-B604-43EE6D928D77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{F5E8A597-925B-4E44-90B7-EB62F14E8C3E} = {03946D9D-0F24-412C-8A56-7B0A96E2716D}
 		{CB97F7F0-34B5-4C91-B604-43EE6D928D77} = {03946D9D-0F24-412C-8A56-7B0A96E2716D}
 	EndGlobalSection
 EndGlobal

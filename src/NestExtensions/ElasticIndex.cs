@@ -1,3 +1,5 @@
+using Nest;
+
 namespace NestExtensions.Contracts;
 
 public class ElasticIndex<TDocument> : IElasticIndex<TDocument> where TDocument : class
