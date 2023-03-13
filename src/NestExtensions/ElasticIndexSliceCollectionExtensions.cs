@@ -1,10 +1,10 @@
-namespace NestExtensions.Utop;
+namespace NestExtensions;
 
 public static class ElasticIndexSliceCollectionExtensions
 {
     public static async Task<IReadOnlyCollection<T>> Documents<T>(this IElasticIndexSlice<T> slice, CancellationToken cancellation = default)
     {
-        if (slice is null) throw new ArgumentNullException(nameof(slice));
+        ArgumentNullException.ThrowIfNull(slice);
         var documents = new List<T>();
         await foreach (var chunk in slice.WithCancellation(cancellation))
         {

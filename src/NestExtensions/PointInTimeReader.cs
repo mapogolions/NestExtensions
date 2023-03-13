@@ -2,13 +2,13 @@ using Nest;
 
 namespace NestExtensions.Contracts;
 
-public class ElasticIndexSnapshot<TDocument> : IElasticIndexSnapshot<TDocument> where TDocument : class
+public class PointInTimeReader<TDocument> : IPointInTimeReader<TDocument> where TDocument : class
 {
     private readonly IElasticClient _client;
-    private readonly ElasticSnapshotOptions _options;
+    private readonly PointInTimeReaderOptions _options;
     private string? _pit;
 
-    public ElasticIndexSnapshot(IElasticClient client, ElasticSnapshotOptions options)
+    public PointInTimeReader(IElasticClient client, PointInTimeReaderOptions options)
     {
         _client = client ?? throw new ArgumentNullException(nameof(client));
         _options = options ?? throw new ArgumentNullException(nameof(options));

@@ -1,6 +1,6 @@
 namespace NestExtensions;
 
-public class ElasticSnapshotOptions
+public class PointInTimeReaderOptions
 {
     public string? IndexName { get; init; }
     public TimeSpan KeepAlive { get; init; } = TimeSpan.FromSeconds(30);

@@ -1,6 +1,6 @@
 namespace NestExtensions.Contracts;
 
-public interface IElasticIndexSnapshot<TDocument> : IAsyncDisposable
+public interface IPointInTimeReader<TDocument> : IAsyncDisposable
 {
     Task<IReadOnlyCollection<IElasticIndexSlice<TDocument>>> Slices(CancellationToken cancellation = default);
 }
