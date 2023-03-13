@@ -10,10 +10,8 @@ public class ElasticIndexSnapshot<TDocument> : IElasticIndexSnapshot<TDocument> 
 
     public ElasticIndexSnapshot(IElasticClient client, ElasticSnapshotOptions options)
     {
-        ArgumentNullException.ThrowIfNull(client);
-        ArgumentNullException.ThrowIfNull(options);
-        _client = client;
-        _options = options;
+        _client = client ?? throw new ArgumentNullException(nameof(client));
+        _options = options ?? throw new ArgumentNullException(nameof(options));
     }
 
     public async Task<IReadOnlyCollection<IElasticIndexSlice<TDocument>>> Slices(CancellationToken cancellation = default)
