@@ -1,6 +1,6 @@
 namespace NestExtensions.Utop;
 
-public static class SliceCollectionExtensions
+public static class ElasticIndexSliceCollectionExtensions
 {
     public static async Task<IReadOnlyCollection<T>> Documents<T>(this IElasticIndexSlice<T> slice, CancellationToken cancellation = default)
     {
