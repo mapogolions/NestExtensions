@@ -1,5 +1,5 @@
 using Nest;
-using NestExtensions.Contracts;
+using NestExtensions;
 
 namespace NestExtensions;
 

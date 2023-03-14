@@ -1,4 +1,4 @@
-namespace NestExtensions.Contracts;
+namespace NestExtensions;
 
 public interface IElasticDocument
 {

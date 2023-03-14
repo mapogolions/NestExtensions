@@ -1,6 +1,6 @@
 using Nest;
 
-namespace NestExtensions.Contracts;
+namespace NestExtensions;
 
 public class PointInTimeReader<TDocument> : IPointInTimeReader<TDocument> where TDocument : class
 {
