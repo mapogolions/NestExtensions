@@ -1,9 +1,8 @@
 using Nest;
-using NestExtensions;
 
 namespace NestExtensions;
 
-public static class ElasticClientTakeSnapshotExtensions
+public static class ElasticClientPointInTimeReaderExtensions
 {
     public static IPointInTimeReader<TDocument> PointInTimeReader<TDocument>(this IElasticClient client, PointInTimeReaderOptions options)
         where TDocument : class

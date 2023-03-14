@@ -1,6 +1,6 @@
 namespace NestExtensions;
 
-public static class ElasticIndexSliceCollectionExtensions
+public static class ElasticIndexSliceExtensions
 {
     public static async Task<IReadOnlyCollection<T>> Documents<T>(this IElasticIndexSlice<T> slice, CancellationToken cancellation = default)
     {
