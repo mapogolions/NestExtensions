@@ -18,10 +18,6 @@ internal partial class PointInTimeReader<TDocument>
 
         public async IAsyncEnumerator<IReadOnlyCollection<TDocument>> GetAsyncEnumerator(CancellationToken cancellation = default)
         {
-            if (!string.IsNullOrEmpty(_reader._pit))
-            {
-                throw new InvalidOperationException("Pit has not been open yet");
-            }
             ISearchResponse<TDocument>? searchResponse = null;
             while (true)
             {
