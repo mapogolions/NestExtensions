@@ -4,16 +4,26 @@ namespace NestExtensions;
 
 public static class ElasticClientPointInTimeReaderExtensions
 {
-    public static IPointInTimeReader<TDocument> PointInTimeReader<TDocument>(this IElasticClient client, PointInTimeReaderOptions options)
-        where TDocument : class
+    public static async Task<IPointInTimeReader<TDocument>> OpenPointInTimeReader<TDocument>(this IElasticClient client, PointInTimeReaderOptions options,
+        CancellationToken cancellation = default) where TDocument : class
     {
         ArgumentNullException.ThrowIfNull(client);
-        return new PointInTimeReader<TDocument>(client, options);
+        Time keepAlive = options.KeepAlive;
+        var response = await client.OpenPointInTimeAsync(options.IndexName, o => o.KeepAlive(keepAlive.ToString()));
+        return new PointInTimeReader<TDocument>(client, options, pit: response.Id);
     }
 
-    public static IPointInTimeReader<TDocument> PointInTimeReader<TDocument>(this IElasticClient client, string indexName, int size = 10_000, int slices = 1)
+    public static Task<IPointInTimeReader<TDocument>> OpenPointInTimeReader<TDocument>(this IElasticClient client, string indexName, int size = 10_000, int slices = 1,
+        CancellationToken cancellation = default)
         where TDocument : class
     {
-        return PointInTimeReader<TDocument>(client, new() { IndexName = indexName, Size = size, Slices = slices });
+        return OpenPointInTimeReader<TDocument>(client, new() { IndexName = indexName, Size = size, Slices = slices }, cancellation);
+    }
+
+    public static Task<IPointInTimeReader<TDocument>> OpenPointInTimeReader<TDocument>(this IElasticClient client, string indexName, TimeSpan keepAlive, int size = 10_000, int slices = 1,
+        CancellationToken cancellation = default)
+        where TDocument : class
+    {
+        return OpenPointInTimeReader<TDocument>(client, new() { IndexName = indexName, Size = size, Slices = slices, KeepAlive = keepAlive }, cancellation);
     }
 }

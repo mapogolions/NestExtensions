@@ -2,7 +2,7 @@ using Nest;
 
 namespace NestExtensions;
 
-public partial class PointInTimeReader<TDocument>
+internal partial class PointInTimeReader<TDocument>
 {
     private class ElasticIndexSlice : IElasticIndexSlice<TDocument>
     {
