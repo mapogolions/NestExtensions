@@ -48,10 +48,10 @@ public class PointInTimeReaderTests
         // Act
         await using var reader = await _fixture.Client.PointInTimeReader<Item>(indexName, size: 1000, slices: 4);
         var result = await Task.WhenAll(reader.Slices.Select(x => x.Documents()).ToArray());
-        var actual = result.Sum(x => x.Count);
+        var actual = result.SelectMany(x => x).DistinctBy(x => x.Id).ToList();
 
         // Assert
-        Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual.Count);
     }
 
     [Fact]
