@@ -14,6 +14,28 @@ public class PointInTimeReaderTests
     }
 
     [Fact]
+    public async Task ShouldBeAbleToBuildCustomQuery()
+    {
+        // Arrange
+        string indexName = GenerateIndexName();
+        var documents = Enumerable.Range(1, 10_000).Select(x => new Item { Id = x, Name = $"Item{x}" }).ToList();
+        await _fixture.Client.IndexManyAsync(documents, indexName);
+        await _fixture.Client.Indices.RefreshAsync(indexName);
+
+        // Act
+        await using var reader = await _fixture.Client.PointInTimeReader<Item>(
+            indexName: indexName,
+            size: 1000,
+            slices: 1,
+            builder: s => s.Range(r => r.Field("Id").GreaterThan(5000)));
+        var slice = reader.Slices.Single();
+        var actual = await slice.Documents();
+
+        // Assert
+        Assert.Equal(5000, actual.Count);
+    }
+
+    [Fact]
     public async Task ShouldReadUsingMultipleSlices()
     {
         // Arrange

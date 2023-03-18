@@ -27,6 +27,7 @@ internal partial class PointInTimeReader<TDocument>
                     if (_reader._options.Slices > 1) s.Slice(x => x.Id(Id).Max(_reader._options.Slices));
                     s.PointInTime(pit, p => p.KeepAlive(_reader._options.KeepAlive));
                     s.Size(_reader._options.Size);
+                    if (_reader._builder is not null) s.Query(_reader._builder);
                     s.Sort(x => x.Ascending(SortSpecialField.ShardDocumentOrder));
                     if (searchResponse != null) s.SearchAfter(searchResponse.Hits?.LastOrDefault()?.Sorts);
                     return s;

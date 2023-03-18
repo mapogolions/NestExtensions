@@ -7,16 +7,16 @@ internal partial class PointInTimeReader<TDocument> : IPointInTimeReader<TDocume
     private readonly Lazy<IReadOnlyCollection<IElasticIndexSlice<TDocument>>> _slices;
     private readonly IElasticClient _client;
     private readonly PointInTimeReaderOptions _options;
-    private readonly Func<SearchDescriptor<TDocument>, ISearchRequest>? _configure;
+    private readonly Func<QueryContainerDescriptor<TDocument>, QueryContainer>? _builder;
     private readonly string _pit;
     private bool _disposed;
 
-    internal PointInTimeReader(IElasticClient client, PointInTimeReaderOptions options, string pit, Func<SearchDescriptor<TDocument>, ISearchRequest>? configure = null)
+    internal PointInTimeReader(IElasticClient client, PointInTimeReaderOptions options, string pit, Func<QueryContainerDescriptor<TDocument>, QueryContainer>? builder)
     {
         _client = client ?? throw new ArgumentNullException(nameof(client));
         _options = options ?? throw new ArgumentNullException(nameof(options));
         _pit = pit ?? throw new ArgumentNullException(nameof(_pit));
-        _configure = configure;
+        _builder = builder;
         _slices = new(Factory, isThreadSafe: true);
     }
 
