@@ -15,7 +15,7 @@ internal partial class PointInTimeReader<TDocument> : IPointInTimeReader<TDocume
         _client = client ?? throw new ArgumentNullException(nameof(client));
         _options = options ?? throw new ArgumentNullException(nameof(options));
         _pit = pit ?? throw new ArgumentNullException(nameof(_pit));
-        _slices = new(Factory, isThreadSafe: false);
+        _slices = new(Factory, isThreadSafe: true);
     }
 
     public IReadOnlyCollection<IElasticIndexSlice<TDocument>> Slices
