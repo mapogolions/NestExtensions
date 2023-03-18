@@ -1,9 +1,8 @@
-It should work something like this. Design is still in progress
+### NestPit
+
 
 ```c#
-await using (var reader = await client.PointInTimeReader("index", size: 10_000, slices: 4))
-{
-    var slices = reader.Slices;
-    await Task.WhenAll(slices.Select(HandleSlice));
-}
+await using var reader = await client.PointInTimeReader("index", size: 10_000, slices: 4);
+var slices = reader.Slices;
+await Task.WhenAll(slices.Select(HandleSlice));
 ```
