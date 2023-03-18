@@ -3,11 +3,6 @@ using Testcontainers.Elasticsearch;
 
 namespace NestExtensions.Tests.Fixtures;
 
-// public static class ElasticClientExtensions
-// {
-//     public Task
-// }
-
 public class ElasticsearchFixture : IDisposable
 {
     private const int _containerPort = 9200;

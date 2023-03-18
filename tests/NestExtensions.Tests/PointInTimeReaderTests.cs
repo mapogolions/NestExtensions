@@ -19,12 +19,12 @@ public class PointInTimeReaderTests
         // Arrange
         string indexName = GenerateIndexName();
         const int expected = 10_000;
-        var documents = Enumerable.Range(1, expected).Select(x => new { Id = x, Name = $"Item{x}" }).ToList();
+        var documents = Enumerable.Range(1, expected).Select(x => new Item { Id = x, Name = $"Item{x}" }).ToList();
         await _fixture.Client.IndexManyAsync(documents, indexName);
         await _fixture.Client.Indices.RefreshAsync(indexName);
 
         // Act
-        await using var reader = await _fixture.Client.PointInTimeReader<object>(indexName, size: 1000, slices: 4);
+        await using var reader = await _fixture.Client.PointInTimeReader<Item>(indexName, size: 1000, slices: 4);
         var result = await Task.WhenAll(reader.Slices.Select(x => x.Documents()).ToArray());
         var actual = result.Sum(x => x.Count);
 
@@ -38,12 +38,12 @@ public class PointInTimeReaderTests
         // Arrange
         const int size = 200;
         string indexName = GenerateIndexName();
-        var documents = Enumerable.Range(1, 1000).Select(x => new { Id = x, Name = $"Item{x}" }).ToList();
+        var documents = Enumerable.Range(1, 1000).Select(x => new Item { Id = x, Name = $"Item{x}" }).ToList();
         await _fixture.Client.IndexManyAsync(documents, indexName);
         await _fixture.Client.Indices.RefreshAsync(indexName);
 
         // Act
-        await using var reader = await _fixture.Client.PointInTimeReader<object>(indexName, size: size, slices: 1);
+        await using var reader = await _fixture.Client.PointInTimeReader<Item>(indexName, size: size, slices: 1);
         var slice = reader.Slices.Single();
 
         // Assert
@@ -59,12 +59,12 @@ public class PointInTimeReaderTests
         // Arrange
         string indexName = GenerateIndexName();
         const int expected = 10_000;
-        var documents = Enumerable.Range(1, expected).Select(x => new { Id = x, Name = $"Item{x}" }).ToList();
+        var documents = Enumerable.Range(1, expected).Select(x => new Item { Id = x, Name = $"Item{x}" }).ToList();
         await _fixture.Client.IndexManyAsync(documents, indexName);
         await _fixture.Client.Indices.RefreshAsync(indexName);
 
         // Act
-        await using var reader = await _fixture.Client.PointInTimeReader<object>(indexName, size: 1000, slices: 1);
+        await using var reader = await _fixture.Client.PointInTimeReader<Item>(indexName, size: 1000, slices: 1);
         var slice = reader.Slices.Single();
         var actual = await slice.Documents();
 
@@ -81,7 +81,7 @@ public class PointInTimeReaderTests
     {
         string indexName = GenerateIndexName();
         await _fixture.Client.Indices.CreateAsync(indexName);
-        await using var reader = await _fixture.Client.PointInTimeReader<object>(indexName, slices: slices);
+        await using var reader = await _fixture.Client.PointInTimeReader<Item>(indexName, slices: slices);
         Assert.Equal(slices, reader.Slices.Count);
     }
 
