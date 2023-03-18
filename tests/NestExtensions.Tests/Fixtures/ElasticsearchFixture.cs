@@ -5,7 +5,6 @@ namespace NestExtensions.Test.Fixtures;
 
 public class ElasticsearchFixture : IDisposable
 {
-    private const int _hostPort = 9200;
     private const int _containerPort = 9200;
     private const string _password = "secret";
 
@@ -23,7 +22,7 @@ public class ElasticsearchFixture : IDisposable
     private ElasticsearchContainer ContainerFactory()
     {
         var container = new ElasticsearchBuilder()
-            .WithPortBinding(_hostPort, _containerPort)
+            .WithPortBinding(_containerPort, true)
             .WithPassword(_password)
             .WithEnvironment("xpack.security.enabled", "false")
             .Build();

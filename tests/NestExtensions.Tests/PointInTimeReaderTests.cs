@@ -13,7 +13,7 @@ public class PointInTimeReaderTests
     }
 
     [Fact]
-    public async Task Deleteme()
+    public async Task ShouldCheckClusterHealth()
     {
         var res = await _fixture.Client.Cluster.HealthAsync();
         Assert.True(res.IsValid);
