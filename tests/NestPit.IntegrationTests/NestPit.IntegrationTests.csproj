@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\NestExtensions\NestExtensions.csproj" />
+    <ProjectReference Include="..\..\src\NestPit\NestPit.csproj" />
   </ItemGroup>
 
 </Project>

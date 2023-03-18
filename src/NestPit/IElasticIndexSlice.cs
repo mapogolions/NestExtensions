@@ -1,4 +1,4 @@
-namespace NestExtensions;
+namespace NestPit;
 
 public interface IElasticIndexSlice<T> : IAsyncEnumerable<IReadOnlyCollection<T>>
 {

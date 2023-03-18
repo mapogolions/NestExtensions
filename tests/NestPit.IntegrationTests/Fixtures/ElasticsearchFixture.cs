@@ -1,7 +1,7 @@
 using Nest;
 using Testcontainers.Elasticsearch;
 
-namespace NestExtensions.Tests.Fixtures;
+namespace NestPit.IntegrationTests.Fixtures;
 
 public class ElasticsearchFixture : IDisposable
 {

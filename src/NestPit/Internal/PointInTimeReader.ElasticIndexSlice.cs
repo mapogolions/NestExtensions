@@ -1,6 +1,6 @@
 using Nest;
 
-namespace NestExtensions;
+namespace NestPit;
 
 internal partial class PointInTimeReader<TDocument>
 {

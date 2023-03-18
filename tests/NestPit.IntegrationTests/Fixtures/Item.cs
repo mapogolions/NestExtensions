@@ -1,4 +1,4 @@
-namespace NestExtensions.Tests.Fixtures;
+namespace NestPit.IntegrationTests.Fixtures;
 
 public class Item
 {

@@ -1,7 +1,7 @@
-using NestExtensions.Tests.Fixtures;
+using NestPit.IntegrationTests.Fixtures;
 using Nest;
 
-namespace NestExtensions.Tests;
+namespace NestPit.IntegrationTests;
 
 [Collection(nameof(ElasticsearchCollection))]
 public class PointInTimeReaderTests

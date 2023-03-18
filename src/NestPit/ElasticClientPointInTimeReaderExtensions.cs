@@ -1,6 +1,6 @@
 using Nest;
 
-namespace NestExtensions;
+namespace NestPit;
 
 public static class ElasticClientPointInTimeReaderExtensions
 {

@@ -1,4 +1,4 @@
-namespace NestExtensions;
+namespace NestPit;
 
 public static class ElasticIndexSliceExtensions
 {

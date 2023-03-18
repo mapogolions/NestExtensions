@@ -1,4 +1,4 @@
-namespace NestExtensions;
+namespace NestPit;
 
 public interface IPointInTimeReader<TDocument> : IAsyncDisposable
 {
