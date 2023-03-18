@@ -6,7 +6,7 @@ public static class ElasticIndexSliceExtensions
     {
         ArgumentNullException.ThrowIfNull(slice);
         var documents = new List<T>();
-        await foreach (var chunk in slice.WithCancellation(cancellation))
+        await foreach (var chunk in slice)
         {
             documents.AddRange(chunk);
         }
